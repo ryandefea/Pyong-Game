@@ -86,7 +86,27 @@ def paddle_b_up():
 def paddle_b_down():
     y = paddle_b.ycor()
     y -= 20
-    paddle_b.sety(y)    
+    paddle_b.sety(y)   
+
+def paddle_c_left():
+    x = paddle_c.xcor()
+    x -= 20
+    paddle_c.setx(x)
+
+def paddle_c_right():
+    x = paddle_c.xcor()
+    x += 20
+    paddle_c.setx(x)    
+
+def paddle_d_left():
+    x = paddle_d.xcor()
+    x -= 20
+    paddle_d.setx(x)
+
+def paddle_d_right():
+    x = paddle_d.xcor()
+    x += 20
+    paddle_d.setx(x)   
     
 
 # Keyboard binding
@@ -94,7 +114,11 @@ wn.listen()
 wn.onkeypress(paddle_a_up, "q")
 wn.onkeypress(paddle_a_down, "a")
 wn.onkeypress(paddle_b_up, "Up")
-wn.onkeypress(paddle_b_down, "Down")    
+wn.onkeypress(paddle_b_down, "Down")
+wn.onkeypress(paddle_c_left, "y")
+wn.onkeypress(paddle_c_right, "u")
+wn.onkeypress(paddle_d_left, "n")
+wn.onkeypress(paddle_d_right, "m")    
 
 #main game loop
 while True:
