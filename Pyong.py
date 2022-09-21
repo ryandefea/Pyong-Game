@@ -7,8 +7,10 @@ wn.setup(width=800, height=800)
 wn.tracer(0)
 
 # Score
-score_a = 0
-score_b = 0
+score_a = 10
+score_b = 10
+score_c = 10
+score_d = 10
 
 # Paddle A
 paddle_a = turtle.Turtle()
@@ -45,7 +47,7 @@ pen.color("white")
 pen.penup()
 pen.hideturtle()
 pen.goto(0, 340)
-pen.write("Player A: 0 Player B: 0", align="center", font=("Comic Sans", 24, "normal"))
+pen.write("Player A: 10 Player B: 10 Player C: 10 Player D: 10", align="center", font=("Comic Sans", 24, "normal"))
 
 # Function
 def paddle_a_up():
@@ -86,30 +88,49 @@ while True:
    ball.sety(ball.ycor() + ball.dy)
    
    # Border checking top border
-   if ball.ycor() > 390:
-        ball.sety(390)
-        ball.dy *= -1
+
+  #  uncomment for 2 player
+  #  if ball.ycor() > 390:
+  #       ball.sety(390)
+  #       ball.dy *= -1
 
    # Border checking bottom border
+  #  uncomment for 2 player
+  #  if ball.ycor() < -390:
+  #       ball.sety(-390)
+  #       ball.dy *= -1
+
+   # Border checking for bottom boarder
    if ball.ycor() < -390:
-        ball.sety(-390)
+        ball.goto(0, 0)
         ball.dy *= -1
+        score_d -= 1
+        pen.clear()
+        pen.write("Player A: {} Player B: {} Player C: {} Player D: {}".format(score_a, score_b, score_c, score_d), align="center", font=("Comic Sans", 24, "normal"))
+
+   # Border checking for top boarder
+   if ball.ycor() > 390:
+        ball.goto(0, 0)
+        ball.dy *= -1
+        score_c -= 1
+        pen.clear()
+        pen.write("Player A: {} Player B: {} Player C: {} Player D: {}".format(score_a, score_b, score_c, score_d), align="center", font=("Comic Sans", 24, "normal"))
 
    # Border checking right border
    if ball.xcor() > 390:
         ball.goto(0, 0)
         ball.dx *= -1
-        score_a += 1
+        score_b -= 1
         pen.clear()
-        pen.write("Player A: {} Player B: {}".format(score_a, score_b), align="center", font=("Comic Sans", 24, "normal"))
+        pen.write("Player A: {} Player B: {} Player C: {} Player D: {}".format(score_a, score_b, score_c, score_d), align="center", font=("Comic Sans", 24, "normal"))
 
    # Border checking left border
    if ball.xcor() < -390:
         ball.goto(0, 0)
         ball.dx *= -1
-        score_b += 1
+        score_a -= 1
         pen.clear()
-        pen.write("Player A: {} Player B: {}".format(score_a, score_b), align="center", font=("Comic Sans", 24, "normal"))
+        pen.write("Player A: {} Player B: {} Player C: {} Player D: {}".format(score_a, score_b, score_c, score_d), align="center", font=("Comic Sans", 24, "normal"))
 
 
    # Paddle and ball collisions - if ball x coordinate is greater than 340 and less than 350 and the balls y coordinate is less than paddle b's y coordinate + 50 and the ball's y coordinate is greater than paddle b's y coordinate -50. ball.setx moves the ball back to the left a little and ball.dx *1 -1 reverses the ball  
