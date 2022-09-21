@@ -55,8 +55,8 @@ ball.shape("square")
 ball.color("white")
 ball.penup()
 ball.goto(0, 0)
-ball.dx = .05
-ball.dy = .05
+ball.dx = .2
+ball.dy = .25
 
 # Pen
 pen = turtle.Turtle()
@@ -64,7 +64,7 @@ pen.speed(0)
 pen.color("white")
 pen.penup()
 pen.hideturtle()
-pen.goto(0, 340)
+pen.goto(0, 360)
 pen.write("Player A: 10 Player B: 10 Player C: 10 Player D: 10", align="center", font=("Comic Sans", 24, "normal"))
 
 # Function
@@ -183,4 +183,12 @@ while True:
    if (ball.xcor() < -340 and ball.xcor() > -350) and (ball.ycor() < paddle_a.ycor() + 50 and ball.ycor() > paddle_a.ycor() -50):
        ball.setx(-335)
        ball.dx *= -1
+
+   if (ball.ycor() < -340 and ball.ycor() > -350) and (ball.xcor() < paddle_d.xcor() + 50 and ball.xcor() > paddle_d.xcor() -50):
+       ball.sety(-335)
+       ball.dy *= -1
+
+   if (ball.ycor() > 340 and ball.ycor() < 350) and (ball.xcor() < paddle_c.xcor() + 50 and ball.xcor() > paddle_c.xcor() -50):
+       ball.sety(335)
+       ball.dy *= -1
        
