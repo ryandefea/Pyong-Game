@@ -91,3 +91,14 @@ while True:
    if ball.xcor() < -390:
         ball.goto(0, 0)
         ball.dx *= -1
+
+
+   # Paddle and ball collisions - if ball x coordinate is greater than 340 and less than 350 and the balls y coordinate is less than paddle b's y coordinate + 50 and the ball's y coordinate is greater than paddle b's y coordinate -50. ball.setx moves the ball back to the left a little and ball.dx *1 -1 reverses the ball  
+   if (ball.xcor() > 340 and ball.xcor() < 350) and (ball.ycor() < paddle_b.ycor() + 50 and ball.ycor() > paddle_b.ycor() -50):
+       ball.setx(335)
+       ball.dx *= -1
+
+   if (ball.xcor() < -340 and ball.xcor() > -350) and (ball.ycor() < paddle_a.ycor() + 50 and ball.ycor() > paddle_a.ycor() -50):
+       ball.setx(-335)
+       ball.dx *= -1
+       
