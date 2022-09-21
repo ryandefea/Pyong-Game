@@ -31,6 +31,8 @@ ball.shape("square")
 ball.color("white")
 ball.penup()
 ball.goto(0, 0)
+ball.dx = .05
+ball.dy = .05
 
 # Function
 def paddle_a_up():
@@ -64,3 +66,28 @@ wn.onkeypress(paddle_b_down, "Down")
 #main game loop
 while True:
    wn.update()
+
+
+   # Move ball takes where the ball is starting xcor or ycor and then applies the speed and movement ball.dx or ball.dy
+   ball.setx(ball.xcor() + ball.dx)
+   ball.sety(ball.ycor() + ball.dy)
+   
+   # Border checking top border
+   if ball.ycor() > 390:
+        ball.sety(390)
+        ball.dy *= -1
+
+   # Border checking bottom border
+   if ball.ycor() < -390:
+        ball.sety(-390)
+        ball.dy *= -1
+
+   # Border checking right border
+   if ball.xcor() > 390:
+        ball.goto(0, 0)
+        ball.dx *= -1
+
+   # Border checking left border
+   if ball.xcor() < -390:
+        ball.goto(0, 0)
+        ball.dx *= -1
