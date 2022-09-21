@@ -6,6 +6,10 @@ wn.bgcolor("black")
 wn.setup(width=800, height=800)
 wn.tracer(0)
 
+# Score
+score_a = 0
+score_b = 0
+
 # Paddle A
 paddle_a = turtle.Turtle()
 paddle_a.speed(0)
@@ -33,6 +37,15 @@ ball.penup()
 ball.goto(0, 0)
 ball.dx = .05
 ball.dy = .05
+
+# Pen
+pen = turtle.Turtle()
+pen.speed(0)
+pen.color("white")
+pen.penup()
+pen.hideturtle()
+pen.goto(0, 340)
+pen.write("Player A: 0 Player B: 0", align="center", font=("Comic Sans", 24, "normal"))
 
 # Function
 def paddle_a_up():
@@ -86,11 +99,17 @@ while True:
    if ball.xcor() > 390:
         ball.goto(0, 0)
         ball.dx *= -1
+        score_a += 1
+        pen.clear()
+        pen.write("Player A: {} Player B: {}".format(score_a, score_b), align="center", font=("Comic Sans", 24, "normal"))
 
    # Border checking left border
    if ball.xcor() < -390:
         ball.goto(0, 0)
         ball.dx *= -1
+        score_b += 1
+        pen.clear()
+        pen.write("Player A: {} Player B: {}".format(score_a, score_b), align="center", font=("Comic Sans", 24, "normal"))
 
 
    # Paddle and ball collisions - if ball x coordinate is greater than 340 and less than 350 and the balls y coordinate is less than paddle b's y coordinate + 50 and the ball's y coordinate is greater than paddle b's y coordinate -50. ball.setx moves the ball back to the left a little and ball.dx *1 -1 reverses the ball  
